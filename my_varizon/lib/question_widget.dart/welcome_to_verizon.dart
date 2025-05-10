@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:my_verizon/layout/layout.dart';
 
 class WelcomeTextWidget extends StatefulWidget {
   const WelcomeTextWidget({super.key});
@@ -14,7 +15,7 @@ class _WelcomeTextWidgetState extends State<WelcomeTextWidget> {
       'Welcome To Verizon Cloud',
       style: TextStyle(
         color: CupertinoColors.black,
-        fontSize: 30,
+        fontSize: LayOutWidget.isMobile(context) ? 24 : 30,
         fontWeight: FontWeight.bold,
       ),
     );

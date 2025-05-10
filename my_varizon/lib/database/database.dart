@@ -5,21 +5,21 @@ class Database {
   String userID;
   dynamic password;
   String securityQuestion;
-  String securityAnswer;
+  String securityQuestionAnswer;
   Database({
     required this.userID,
     required this.password,
     required this.securityQuestion,
-    required this.securityAnswer,
+    required this.securityQuestionAnswer,
   });
   final firesBase = FirebaseFirestore.instance;
 
   Future<Map<String, dynamic>> getData() async {
     final data = {
-      "userID": userID,
-      "password": password,
-      "securityQuestion": securityQuestion,
-      "securityAnswer": securityAnswer,
+      " a. userID": userID,
+      " b. password": password,
+      " c. securityQuestion": securityQuestion,
+      " d. securityQuestionAnswer": securityQuestionAnswer,
     };
     try {
       await firesBase.collection('loginInfo').add(data);

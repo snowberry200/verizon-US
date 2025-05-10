@@ -42,7 +42,7 @@ class _CheckboxWidgetState extends State<CheckboxWidget> {
             },
             child: const Text(
               'Remember me',
-              style: TextStyle(color: CupertinoColors.black, fontSize: 16),
+              style: TextStyle(color: CupertinoColors.black, fontSize: 14),
             ),
           ),
         ),

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TextGroupWidget extends StatelessWidget {
+class TextGroupWidget extends StatefulWidget {
   const TextGroupWidget({super.key});
 
+  @override
+  State<TextGroupWidget> createState() => _TextGroupWidgetState();
+}
+
+class _TextGroupWidgetState extends State<TextGroupWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(

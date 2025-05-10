@@ -1,8 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-class TextWidget extends StatelessWidget {
+class TextWidget extends StatefulWidget {
   const TextWidget({super.key});
 
+  @override
+  State<TextWidget> createState() => _TextWidgetState();
+}
+
+class _TextWidgetState extends State<TextWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -10,8 +15,8 @@ class TextWidget extends StatelessWidget {
       child: Text(
         'Sign in',
         style: TextStyle(
-          color: CupertinoColors.black,
           fontSize: 30,
+          color: Colors.black,
           fontWeight: FontWeight.bold,
         ),
       ),

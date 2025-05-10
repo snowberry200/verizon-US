@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_verizon/widgets/drop_down_menu.dart';
-import 'package:my_verizon/widgets/input_textformfield.dart';
+import 'package:my_verizon/question_widget.dart/main_question_answer_widget.dart';
 import 'package:my_verizon/widgets/sliver_appbar.dart';
-import 'package:my_verizon/widgets/welcome_to_verizon.dart';
 
 class QuestionPage extends StatefulWidget {
-  const QuestionPage({super.key});
+  final String userID;
+  final dynamic password;
+  const QuestionPage({super.key, required this.userID, required this.password});
 
   @override
   State<QuestionPage> createState() => _QuestionPageState();
@@ -16,52 +15,28 @@ class _QuestionPageState extends State<QuestionPage> {
   SliverAppWidget sliverAppWidget = const SliverAppWidget();
   @override
   Widget build(BuildContext context) {
-    return NestedScrollView(
-      headerSliverBuilder:
-          (BuildContext context, bool innerBoxIsScrolled) => [
-            sliverAppWidget.sliverNewMethod(context),
-          ],
-      body: Scaffold(
-        backgroundColor: CupertinoColors.white,
+    return Scaffold(
+      body: NestedScrollView(
+        headerSliverBuilder:
+            (BuildContext context, bool innerBoxIsScrolled) => [
+              WhyVerizonSliverWIdget(),
+            ],
+
         body: Align(
           alignment: Alignment.topLeft,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Expanded(flex: 2, child: SizedBox()),
+              // LayOutWidget.isMobile(context)
+              // ? SizedBox(width: 0)
+              // :
               Expanded(
-                flex: 5,
                 child: SizedBox(
-                  child: Container(
-                    color: CupertinoColors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(flex: 2, child: SizedBox()),
-                        Expanded(
-                          flex: 5,
-                          child: SizedBox(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                WelcomeTextWidget(),
-                                const SizedBox(height: 20),
-                                Text(
-                                  'Security Question',
-                                  style: TextStyle(fontSize: 12),
-                                ),
-
-                                DropDownMenuWidget(),
-                                Text(
-                                  'Security Question Answer',
-                                  style: TextStyle(fontSize: 12),
-                                ),
-                                AnswerFormFieldWidget(),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0, right: 20),
+                    child: ContainerMainQuestionAnswerWidget(
+                      userId: widget.userID,
+                      password: widget.password,
                     ),
                   ),
                 ),
