@@ -27,9 +27,6 @@ class _QuestionPageState extends State<QuestionPage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              // LayOutWidget.isMobile(context)
-              // ? SizedBox(width: 0)
-              // :
               Expanded(
                 child: SizedBox(
                   child: Padding(

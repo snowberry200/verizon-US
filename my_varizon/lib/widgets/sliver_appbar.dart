@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_verizon/layout/layout.dart';
 import 'package:my_verizon/widgets/applebar.dart';
+import 'package:url_launcher/link.dart';
 
 class SliverAppWidget extends StatelessWidget {
   const SliverAppWidget({super.key});
@@ -11,6 +13,7 @@ class SliverAppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: NestedScrollView(
+        dragStartBehavior: DragStartBehavior.start,
         controller: ScrollController(),
         physics: const BouncingScrollPhysics(),
         headerSliverBuilder:
@@ -28,6 +31,7 @@ class WhyVerizonSliverWIdget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Uri url = Uri.parse('https://www.verizon.com/support/');
     return SliverAppBar(
       forceElevated: true,
       toolbarHeight: 70,
@@ -61,19 +65,30 @@ class WhyVerizonSliverWIdget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            TextButton(
-              onPressed: () {},
-              child:
-                  LayOutWidget.isMobile(context)
-                      ? Text(
-                        'Why verizon',
-                        style: TextStyle(fontSize: 12, color: Colors.white),
-                      )
-                      : const Text(
-                        'Why verizon',
-                        style: TextStyle(color: Colors.white),
-                      ),
+            Link(
+              uri: url,
+              target: LinkTarget.self,
+              builder:
+                  (context, followLink) => TextButton(
+                    onPressed: () async {
+                      await followLink!();
+                    },
+                    child:
+                        LayOutWidget.isMobile(context)
+                            ? Text(
+                              'Support',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.white,
+                              ),
+                            )
+                            : const Text(
+                              'Support',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                  ),
             ),
+
             TextButton(
               onPressed: () {},
               child:
@@ -92,7 +107,6 @@ class WhyVerizonSliverWIdget extends StatelessWidget {
       ),
       actions: [
         SizedBox(
-          // width: 150,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
